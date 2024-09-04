@@ -11,15 +11,15 @@ return {
     --]]
     config = function()
       require("mason").setup()
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "jdtls" }
+        ensure_installed = { "lua_ls", "jdtls" },
       })
-    end
+    end,
   },
   --[[
   {
@@ -36,12 +36,12 @@ return {
       lspconfig.lua_ls.setup({})
       lspconfig.jdtls.setup({})
 
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-      vim.keymap.set('n', 'gc', vim.lsp.buf.incoming_calls, {})
-      vim.keymap.set('n', 'go', vim.lsp.buf.outgoing_calls, {})
-      vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
-    end
-  }
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
+      vim.keymap.set("n", "<leader>gc", vim.lsp.buf.incoming_calls, {})
+      vim.keymap.set("n", "<leader>go", vim.lsp.buf.outgoing_calls, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+    end,
+  },
 }

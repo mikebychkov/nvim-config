@@ -6,7 +6,17 @@ local M = {}
 
 M.todo = function()
 
-    print("Hello new plugin world")
+    local query_str = '((comment) @comment (#match? @comment "TODO"))'
+
+    -- :h nvim-treesitter
+
+    local parser = require"nvim-treesitter.parsers".get_parser()
+    local query = vim.treesitter.query.parse(parser:lang(), query_str)
+
+    -- lua print(vim.inspect(require'vim.treesitter.query')) -- no parse_query
+
+    vim.print(query)
+
 
 end
 

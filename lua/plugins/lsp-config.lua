@@ -1,14 +1,6 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		--[[
-    opts = {
-      registries = {
-        'github:nvim-java/mason-registry',
-        'github:mason-org/mason-registry',
-      },
-    },
-    --]]
 		config = function()
 			require("mason").setup()
 		end,
@@ -21,14 +13,6 @@ return {
 			})
 		end,
 	},
-	--[[
-  {
-    'nvim-java/nvim-java',
-    config = function()
-      require('java').setup()
-    end
-  },
-  --]]
 	{
 		"neovim/nvim-lspconfig",
 		config = function()

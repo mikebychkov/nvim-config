@@ -10,3 +10,9 @@ Autocomplete and Snippets:
 - cmp.luasnip - completion source for nvim-cmp
 - rafamadriz/friendly-snippets - collection of snippets for luasnip
 - cmp-nvim-lsp - gives snippets ability to port to nvim-cmp
+
+FURTHER READING:
+
+https://neovim.io/doc/user/usr_toc.html#user-manual
+
+https://neovim.io/doc/user/lua-guide.html#lua-guide

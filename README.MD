@@ -16,3 +16,11 @@ FURTHER READING:
 https://neovim.io/doc/user/usr_toc.html#user-manual
 
 https://neovim.io/doc/user/lua-guide.html#lua-guide
+
+REPOS TO CHECK:
+
+https://github.com/nvim-java/nvim-java
+
+https://github.com/javiorfo/nvim-springtime
+
+https://github.com/JavaHello/spring-boot.nvim

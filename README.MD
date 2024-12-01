@@ -1,3 +1,9 @@
+Credits for @typecraft and his free course:
+
+https://www.youtube.com/playlist?list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn
+
+--
+
 In order to Telescope grep to be working ripgrep need to be installed:
 
 sudo apt install ripgrep

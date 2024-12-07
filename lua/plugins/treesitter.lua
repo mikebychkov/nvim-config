@@ -5,6 +5,7 @@ return {
 		local treesitter_config = require("nvim-treesitter.configs")
 		treesitter_config.setup({
 			ensure_installed = {
+                "c",
 				"lua",
 				"vim",
 				"vimdoc",
@@ -16,6 +17,9 @@ return {
 				"javascript",
 				"typescript",
 				"clojure",
+                "query",
+                "markdown",
+                "markdown_inline"
 			},
 			highlight = { enable = true },
 			indent = { enable = true },

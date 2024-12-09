@@ -1,4 +1,10 @@
 return {
+    {
+        "nvim-java/nvim-java",
+        config = function()
+            require("java").setup()
+        end
+    },
 	{
 		"williamboman/mason.nvim",
 		config = function()

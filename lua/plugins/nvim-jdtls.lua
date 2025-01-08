@@ -28,7 +28,7 @@ return {
                 java = {
                     jdt = {
                         ls = {
-                            lombokSupport = {
+                            lomboksupport = {
                                 enabled = true
                             }
                         }

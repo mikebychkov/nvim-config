@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "jdtls" },
+				ensure_installed = { "lua_ls", "jdtls", "gopls@v0.15.3" },
 			})
 		end,
 	},
@@ -23,6 +23,9 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.jdtls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
 

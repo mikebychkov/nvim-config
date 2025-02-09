@@ -39,49 +39,55 @@ return {
 
             print(jar_path)
 
-			local sbls_config = {
-				name = "spring_boot_ls",
-				cmd = {
-                    "java",
-                    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-                    "-Dosgi.bundles.defaultStartLevel=4",
-                    "-Declipse.product=org.eclipse.jdt.ls.core.product",
-                    "-Dlog.level=ALL",  -- Enable detailed logs
-                    "-cp", lib_path,
-                    "-jar", jar_path
-                }, -- Command to start the language server
-				filetypes = { "java", }, -- File types supported
-				root_dir = function(fname)
-					-- return lspconfig.util.root_pattern("pom.xml", "build.gradle", "pom.xml", "build.gradle")(fname) or vim.loop.cwd()
-					return vim.fs.dirname(vim.fs.find({ "gradlew", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1])
-				end,
-				-- capabilities = vim.lsp.protocol.make_client_capabilities(),
-                capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					print("SPRING BOOT LSP attached to buffer " .. bufnr)
-				end,
-			}
-
-			lspconfig.spring_boot_ls = {
-				default_config = sbls_config,
-			}
-
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "java",
-				callback = function(args)
-					print("HEY I'M CALLBACK FROM YOUR BRAND NEW LSP!!!")
-					vim.lsp.start({
-						name = sbls_config.name,
-						cmd = sbls_config.cmd,
-						root_dir = sbls_config.root_dir(),
-						capabilities = sbls_config.capabilities,
-			                     on_attach = sbls_config.on_attach
-					})
-					-- vim.lsp.start_or_attach(sbls_config)
-				end,
-			})
+            -- TRY1 {{
+            --
+			-- local sbls_config = {
+			-- 	name = "spring_boot_ls",
+			-- 	cmd = {
+			--                  "java",
+			--                  "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+			--                  "-Dosgi.bundles.defaultStartLevel=4",
+			--                  "-Declipse.product=org.eclipse.jdt.ls.core.product",
+			--                  "-Dlog.level=ALL",  -- Enable detailed logs
+			--                  "-cp", lib_path,
+			--                  "-jar", jar_path
+			--              }, -- Command to start the language server
+			-- 	filetypes = { "java", }, -- File types supported
+			-- 	root_dir = function(fname)
+			-- 		-- return lspconfig.util.root_pattern("pom.xml", "build.gradle", "pom.xml", "build.gradle")(fname) or vim.loop.cwd()
+			-- 		return vim.fs.dirname(vim.fs.find({ "gradlew", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1])
+			-- 	end,
+			-- 	-- capabilities = vim.lsp.protocol.make_client_capabilities(),
+			--              capabilities = capabilities,
+			-- 	on_attach = function(client, bufnr)
+			-- 		print("SPRING BOOT LSP attached to buffer " .. bufnr)
+			-- 	end,
+			-- }
+			--
+			-- lspconfig.spring_boot_ls = {
+			-- 	default_config = sbls_config,
+			-- }
+			--
+			-- vim.api.nvim_create_autocmd("FileType", {
+			-- 	pattern = "java",
+			-- 	callback = function(args)
+			-- 		print("HEY I'M CALLBACK FROM YOUR BRAND NEW LSP!!!")
+			-- 		vim.lsp.start({
+			-- 			name = sbls_config.name,
+			-- 			cmd = sbls_config.cmd,
+			-- 			root_dir = sbls_config.root_dir(),
+			-- 			capabilities = sbls_config.capabilities,
+			--                      on_attach = sbls_config.on_attach
+			-- 		})
+			-- 		-- vim.lsp.start_or_attach(sbls_config)
+			-- 	end,
+			-- })
+            --
+            -- }} TRY1
 
 			-- vim.lsp.start_or_attach(lspconfig.spring_boot_ls.default_config)
+
+            -- TRY2 {{
 
             -- lspconfig.spring_boot_ls = {
             --     default_config = {
@@ -106,6 +112,8 @@ return {
             --     vim.cmd("LspStart spring_boot_ls")
             --   end,
             -- })
+            --
+            -- }} TRY2
 
 
 			-- KEYMAPPINGS

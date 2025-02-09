@@ -34,15 +34,26 @@ return {
 			local jar_path = vim.fn.stdpath("data") .. "/spring-boot-language-server/spring-boot-language-server.jar"
 			local lib_path = vim.fn.stdpath("data") .. "/spring-boot-language-server/lib/*"
 
+            print(jar_path)
+
 			local sbls_config = {
-				name = "spring-boot-ls",
-				cmd = { "java", "-cp", lib_path, "-jar", jar_path }, -- Command to start the language server
-				filetypes = { "java", "properties", "yml", "yaml" }, -- File types supported
+				name = "spring_boot_ls",
+				cmd = {
+                    "java",
+                    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+                    "-Dosgi.bundles.defaultStartLevel=4",
+                    "-Declipse.product=org.eclipse.jdt.ls.core.product",
+                    "-Dlog.level=ALL",  -- Enable detailed logs
+                    "-cp", lib_path,
+                    "-jar", jar_path
+                }, -- Command to start the language server
+				filetypes = { "java", }, -- File types supported
 				root_dir = function(fname)
-					-- return lspconfig.util.root_pattern("pom.xml", "build.gradle", ".git")(fname) or vim.loop.cwd()
-					return vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1])
+					-- return lspconfig.util.root_pattern("pom.xml", "build.gradle", "pom.xml", "build.gradle")(fname) or vim.loop.cwd()
+					return vim.fs.dirname(vim.fs.find({ "gradlew", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1])
 				end,
-				capabilities = vim.lsp.protocol.make_client_capabilities(),
+				-- capabilities = vim.lsp.protocol.make_client_capabilities(),
+                capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					print("SPRING BOOT LSP attached to buffer " .. bufnr)
 				end,
@@ -61,13 +72,38 @@ return {
 						cmd = sbls_config.cmd,
 						root_dir = sbls_config.root_dir(),
 						capabilities = sbls_config.capabilities,
-                        on_attach = sbls_config.on_attach
+			                     on_attach = sbls_config.on_attach
 					})
 					-- vim.lsp.start_or_attach(sbls_config)
 				end,
 			})
 
 			-- vim.lsp.start_or_attach(lspconfig.spring_boot_ls.default_config)
+
+            -- lspconfig.spring_boot_ls = {
+            --     default_config = {
+            --         cmd = {
+            --             "java",
+            --             "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+            --             "-Dosgi.bundles.defaultStartLevel=4",
+            --             "-Declipse.product=org.eclipse.jdt.ls.core.product",
+            --             "-Dlog.level=ALL",  -- Enable detailed logs
+            --             "-jar", jar_path
+            --         },
+            --         filetypes = { "java" },
+            --         root_dir = lspconfig.util.root_pattern("mvnw", "gradlew", "pom.xml", "build.gradle"),
+					-- root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1])
+            --         capabilities = capabilities,
+            --     }
+            -- }
+            --
+            -- vim.api.nvim_create_autocmd("FileType", {
+            --   pattern = "java",
+            --   callback = function()
+            --     vim.cmd("LspStart spring_boot_ls")
+            --   end,
+            -- })
+
 
 			-- KEYMAPPINGS
 

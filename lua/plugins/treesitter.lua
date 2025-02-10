@@ -19,7 +19,8 @@ return {
 				"clojure",
                 "query",
                 "markdown",
-                "markdown_inline"
+                "markdown_inline",
+                "go"
 			},
 			highlight = { enable = true },
 			indent = { enable = true },

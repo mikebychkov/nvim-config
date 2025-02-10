@@ -34,10 +34,10 @@ return {
             -- https://neovim.io/doc/user/lsp.html#lsp-quickstart
             -- https://www.youtube.com/watch?v=YsdlcQoHqPY&list=PLouzx2g3Ge11yVwykGn-rXlBvy06OPR1N&index=11
 
-			local jar_path = vim.fn.stdpath("data") .. "/spring-boot-language-server/spring-boot-language-server.jar"
-			local lib_path = vim.fn.stdpath("data") .. "/spring-boot-language-server/lib/*"
-
-            print(jar_path)
+			-- local jar_path = vim.fn.stdpath("data") .. "/spring-boot-language-server/spring-boot-language-server.jar"
+			-- local lib_path = vim.fn.stdpath("data") .. "/spring-boot-language-server/lib/*"
+			--
+			--          print(jar_path)
 
             -- TRY1 {{
             --

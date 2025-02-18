@@ -119,12 +119,12 @@ return {
 			-- KEYMAPPINGS
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>dd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>ii", vim.lsp.buf.implementation, {})
-			vim.keymap.set("n", "<leader>cc", vim.lsp.buf.incoming_calls, {})
-			vim.keymap.set("n", "<leader>oo", vim.lsp.buf.outgoing_calls, {})
+			vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, {})
+			vim.keymap.set("n", "<leader>c", vim.lsp.buf.incoming_calls, {})
+			vim.keymap.set("n", "<leader>o", vim.lsp.buf.outgoing_calls, {})
 			-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>aa", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {})
 		end,
 	},
 }

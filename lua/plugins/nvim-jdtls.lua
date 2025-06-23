@@ -29,4 +29,5 @@ return {
     -- /mason/packages/jdtls/bin/jdtls.py
     -- 
     -- "-javaagent:" + str(jdtls_base_path) + "/lombok.jar",
+
 }

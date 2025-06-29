@@ -20,7 +20,8 @@ return {
                 "query",
                 "markdown",
                 "markdown_inline",
-                "go"
+                "go",
+                "python"
 			},
 			highlight = { enable = true },
 			indent = { enable = true },

@@ -30,4 +30,8 @@ return {
     -- 
     -- "-javaagent:" + str(jdtls_base_path) + "/lombok.jar",
 
+    -- FIX OF INCORECT BUFFER ERROR WARNING - put curr buff evaluation inside handler as follows
+    --
+    -- config.handlers['language/status'] = function(err, result, ctx)
+    --   local bufnr = api.nvim_get_current_buf()
 }
